@@ -1,0 +1,38 @@
+<!-- join.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>User Join</title>
+</head>
+<body>
+<h1>User Join</h1>
+<form action="/api/v1/users/join" method="post" th:object="${userJoinRequest}">
+  <label for="userName">Username:</label>
+  <input type="text" id="userName" name="userName" th:field="*{userName}" />
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" th:field="*{password}" />
+  <button type="submit">Join</button>
+</form>
+</body>
+</html>
+html
+코드 복사
+<!-- login.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>User Login</title>
+</head>
+<body>
+<h1>User Login</h1>
+<form action="/api/v1/users/login" method="post" th:object="${userLoginRequest}">
+  <label for="userName">Username:</label>
+  <input type="text" id="userName" name="userName" th:field="*{userName}" />
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" th:field="*{password}" />
+  <button type="submit">Login</button>
+</form>
+</body>
+</html>
