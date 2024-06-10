@@ -277,6 +277,8 @@ class PostRestControllerTest {
         @DisplayName("포스트 삭제 성공")
         @WithMockUser
         void post_delete_success() throws Exception {
+            when(postService.delete(any(), any()))
+                    .thenReturn(new PostResponse("포스트 삭제 완료", 1L));
 
             mockMvc.perform(delete("/api/v1/posts/1")
                             .with(csrf())

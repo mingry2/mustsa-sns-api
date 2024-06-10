@@ -127,13 +127,13 @@ class PostServiceTest {
         @Test
         @DisplayName("포스트 수정 실패(2): 포스트 존재하지 않음")
         void modify_fail2(){
-
+            when(userRepository.findByUserName(userName))
+                    .thenReturn(Optional.of(user));
             when(postRepository.findById(post.getPostId()))
                     .thenReturn(Optional.empty());
 
             AppException exception = Assertions.assertThrows(AppException.class,
-                    // String.valueOf()를 사용하면 전달받은 파라미터가 null이 전달될 경우 문자열 "null"을 반환
-                    () -> postService.modify(String.valueOf(post.getUser().getUserId()), post.getPostId(), post.getTitle(), post.getBody()));
+                    () -> postService.modify(userName, post.getPostId(), post.getTitle(), post.getBody()));
 
             assertEquals(ErrorCode.POST_NOT_FOUND, exception.getErrorCode());
         }

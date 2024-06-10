@@ -53,8 +53,7 @@ class UserRestControllerTest {
 		void join_success() throws Exception {
 
 			when(userService.join(any(), any()))
-					.thenReturn(mock(UserJoinResponse.class));
-//                    .thenReturn(userJoinResponse);
+                    .thenReturn(userJoinResponse);
 
 			mockMvc.perform(post("/api/v1/users/join")
 							.with(csrf())

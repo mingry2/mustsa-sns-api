@@ -38,7 +38,7 @@ class LikeRestControllerTest {
         void add_like() throws Exception {
 
             when(likeService.addLike(any(), any()))
-                    .thenReturn(new LikeAddResponse());
+                    .thenReturn(new LikeAddResponse("좋아요를 눌렀습니다."));
 
             mockMvc.perform(post("/api/v1/posts/1/likes")
                             .with(csrf()))
