@@ -2,7 +2,7 @@
 
 ![](img/멋사스네스타이틀.png)
 
-<a href="http://ec2-43-201-18-57.ap-northeast-2.compute.amazonaws.com:8080/swagger-ui/" target="_blank"><img src="https://img.shields.io/badge/swagger-4285F4?style=flat&logo=Google Chrome&logoColor=white" /></a>
+<a href="http://ec2-13-56-14-205.us-west-1.compute.amazonaws.com:8080/swagger-ui/" target="_blank"><img src="https://img.shields.io/badge/swagger-4285F4?style=flat&logo=Google Chrome&logoColor=white" /></a>
 </div>
 
 # MustsaSNS-API(멋사스네스)
@@ -17,8 +17,8 @@
 1️⃣ ~ 7️⃣ 기능들을 사용하여 회원들끼리 소통하는 SNS 애플리케이션
 
 ## 📌 Swagger:
-2023-06-11 update    
-http://ec2-15-164-93-201.ap-northeast-2.compute.amazonaws.com:8080/swagger-ui/
+2024-06-12 update    
+http://ec2-13-56-14-205.us-west-1.compute.amazonaws.com:8080/swagger-ui/
 
 # 개발환경
 - 에디터 : Intellij Ultimate
