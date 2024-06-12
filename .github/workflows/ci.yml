@@ -9,28 +9,31 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
           java-version: '11'
           distribution: 'temurin'
-
-      - name: Test & Build with Gradle
+      - name: Tests & Build with Gradle
         run: chmod 700 ./gradlew && ./gradlew clean build
+      - name: Docker build and push
+        run: |
+          echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/mutsa-sns .
+          docker push ${{ secrets.DOCKER_USERNAME }}/mutsa-sns
 
-      - name: Docker Login
-        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-
-      - name: Docker Build
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/mutsa-sns .
-
-      - name: Docker Push
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/mutsa-sns
-
-#      - name: Docker Remote Run
-#        run: docker
+  deploy:
+    needs: build
+    name: Deploy to AWS EC2
+    runs-on: [ self-hosted, label-development ]
+    steps:
+      - name: Docker pull and run
+        run: |
+          docker stop mutsa-sns-api || true 
+          docker rm  mutsa-sns-api || true
+          docker rmi ${{ secrets.DOCKER_USERNAME }}/mutsa-sns || true
+          docker pull ${{ secrets.DOCKER_USERNAME }}/mutsa-sns
+          docker run -d --name mutsa-sns-api -e SPRING_DATASOURCE_URL=${{ secrets.SPRING_DATASOURCE_URL }} -e SPRING_DATASOURCE_USERNAME=${{secrets.SPRING_DATASOURCE_USERNAME}} -e SPRING_DATASOURCE_PASSWORD=${{secrets.SPRING_DATASOURCE_PASSWORD}} -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/mutsa-sns
