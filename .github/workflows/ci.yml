@@ -36,4 +36,4 @@ jobs:
           docker rm  mutsa-sns-api || true
           docker rmi ${{ secrets.DOCKER_USERNAME }}/mutsa-sns || true
           docker pull ${{ secrets.DOCKER_USERNAME }}/mutsa-sns
-          docker run -d --name mutsa-sns-api -e SPRING_DATASOURCE_URL=${{ secrets.SPRING_DATASOURCE_URL }} -e SPRING_DATASOURCE_USERNAME=${{secrets.SPRING_DATASOURCE_USERNAME}} -e SPRING_DATASOURCE_PASSWORD=${{secrets.SPRING_DATASOURCE_PASSWORD}} -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/mutsa-sns
+          docker run -d --name mutsa-sns-api --network mutsa_sns_network -e SPRING_DATASOURCE_URL=${{ secrets.SPRING_DATASOURCE_URL }} -e SPRING_DATASOURCE_USERNAME=${{secrets.SPRING_DATASOURCE_USERNAME}} -e SPRING_DATASOURCE_PASSWORD=${{secrets.SPRING_DATASOURCE_PASSWORD}} -e JWT_TOKEN_SECRET=${{secrets.JWT_TOKEN_SECRET}} -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/mutsa-sns

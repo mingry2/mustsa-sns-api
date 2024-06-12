@@ -15,7 +15,7 @@ import java.util.List;
 
 @Configuration
 public class SwaggerConfiguration {
-//    http://ec2-13-209-66-87.ap-northeast-2.compute.amazonaws.com:8080/swagger-ui/
+//    http://ec2-13-56-14-205.us-west-1.compute.amazonaws.com:8080/swagger-ui/
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.OAS_30)
