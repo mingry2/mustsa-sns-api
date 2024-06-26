@@ -17,8 +17,8 @@
 1️⃣ ~ 7️⃣ 기능들을 사용하여 회원들끼리 소통하는 SNS 애플리케이션
 
 ## 📌 Swagger:
-2024-06-12 update    
-http://ec2-13-56-14-205.us-west-1.compute.amazonaws.com:8080/swagger-ui/
+2024-06-26 update    
+http://ec2-54-183-240-199.us-west-1.compute.amazonaws.com:8080/swagger-ui/
 
 # 개발환경
 - 에디터 : Intellij Ultimate
