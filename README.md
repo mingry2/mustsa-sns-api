@@ -2,7 +2,7 @@
 
 ![](img/멋사스네스타이틀.png)
 
-<a href="http://ec2-13-56-14-205.us-west-1.compute.amazonaws.com:8080/swagger-ui/" target="_blank"><img src="https://img.shields.io/badge/swagger-4285F4?style=flat&logo=Google Chrome&logoColor=white" /></a>
+<a href="http://ec2-54-183-240-199.us-west-1.compute.amazonaws.com:8080/swagger-ui/" target="_blank"><img src="https://img.shields.io/badge/swagger-4285F4?style=flat&logo=Google Chrome&logoColor=white" /></a>
 </div>
 
 # MustsaSNS-API(멋사스네스)
